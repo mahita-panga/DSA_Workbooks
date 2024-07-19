@@ -1,0 +1,6 @@
+* TOPO SORT IS APPLICABLE ONLY FOR "DIRECTED GRAPHS"
+* SHORTEST PATH IN DIRECTED GRAPHS : TOPO SORT
+* SHORTEST PATH IN UNDIRECTED GRAPHS:
+ -> Unit weights : distance array(/matrix) + BFS/ Modified DFS
+ -> Positive Weights:
+    -> DIJKSTRA'S with PQ/Set
