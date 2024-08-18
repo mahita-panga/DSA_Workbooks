@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 -> Memoization : Top Down Approach -> Start with the top value and identify the subproblems as we go down.
 If a subproblem is already solved then remember it
 
@@ -13,3 +14,28 @@ solve problems involving subsequences, subsets, or combinations.
 ** CONVERT list to tuples before passing to @cache **
 -> When using @cache annotation, make sure you dont pass lists into the function as list is mutable
 i.e it cause Unhashable error since @cache tries to create a dictionary keys out of the argument passed
+=======
+-> Memoization : Top Down Approach -> Start with the top value and identify the subproblems as we go down.
+If a subproblem is already solved then remember it
+
+-> Tabulation : Bottom Up Approach -> Identify the base cases and then use these to solve until we reach
+the point for we which we are finding the solution.
+    * FIRST RULE OF TABULATION: Declare same size array as the input.
+    * Assign base case's into the declared array
+    * Convert the recursive function call to array variables
+
+-> The pick/no-pick (or include/exclude) method is a common approach used in recursion to
+solve problems involving subsequences, subsets, or combinations.
+
+** CONVERT list to tuples before passing to @cache **
+-> When using @cache annotation, make sure you dont pass lists into the function as list is mutable
+i.e it cause Unhashable error since @cache tries to create a dictionary keys out of the argument passed
+
+FOR 3D DP:
+-> when you identify that problem has more than 2 variable relationship, then do this:
+    * Express everything in terms of variables like i1,j1, i2,j2 ...
+    (See if anything is constant like constant i/j)
+    * Explore all the paths in matrix based on given conditions
+    using these variables
+    * Find max/min/count accordingly
+>>>>>>> f2b4b2f (DP probs)
