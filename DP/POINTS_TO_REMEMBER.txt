@@ -1,4 +1,8 @@
-<<<<<<< HEAD
+-> When uniformity is not there, GREEDY will not solve the problem. Recursion is the solution.
+
+> Consider the dp array with the number of changing states. If 2 variables are changing states then we need to
+consider 2D dp and so on.
+
 -> Memoization : Top Down Approach -> Start with the top value and identify the subproblems as we go down.
 If a subproblem is already solved then remember it
 
@@ -6,23 +10,10 @@ If a subproblem is already solved then remember it
 the point for we which we are finding the solution.
     * FIRST RULE OF TABULATION: Declare same size array as the input.
     * Assign base case's into the declared array
-    * Convert the recursive function call to array variables
-
--> The pick/no-pick (or include/exclude) method is a common approach used in recursion to
-solve problems involving subsequences, subsets, or combinations.
-
-** CONVERT list to tuples before passing to @cache **
--> When using @cache annotation, make sure you dont pass lists into the function as list is mutable
-i.e it cause Unhashable error since @cache tries to create a dictionary keys out of the argument passed
-=======
--> Memoization : Top Down Approach -> Start with the top value and identify the subproblems as we go down.
-If a subproblem is already solved then remember it
-
--> Tabulation : Bottom Up Approach -> Identify the base cases and then use these to solve until we reach
-the point for we which we are finding the solution.
-    * FIRST RULE OF TABULATION: Declare same size array as the input.
-    * Assign base case's into the declared array
-    * Convert the recursive function call to array variables
+    * Convert the recursive function call to array variables.
+    -> No of states/variables =  No.of nested loops.
+     Remember to write the for loops from bottom to up
+    i.e. base case to target/end range.
 
 -> The pick/no-pick (or include/exclude) method is a common approach used in recursion to
 solve problems involving subsequences, subsets, or combinations.
@@ -38,4 +29,3 @@ FOR 3D DP:
     * Explore all the paths in matrix based on given conditions
     using these variables
     * Find max/min/count accordingly
->>>>>>> f2b4b2f (DP probs)
