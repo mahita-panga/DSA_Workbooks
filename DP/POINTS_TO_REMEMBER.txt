@@ -1,7 +1,5 @@
--> When uniformity is not there, GREEDY will not solve the problem. Recursion is the solution.
+-> When uniformity is not there, GREEDY will not solve the problem. Recursion is the solution -> and DP eventually.
 
-> Consider the dp array with the number of changing states. If 2 variables are changing states then we need to
-consider 2D dp and so on.
 
 -> Memoization : Top Down Approach -> Start with the top value and identify the subproblems as we go down.
 If a subproblem is already solved then remember it
@@ -15,8 +13,30 @@ the point for we which we are finding the solution.
      Remember to write the for loops from bottom to up
     i.e. base case to target/end range.
 
+    THUMB RULE TO FURTHER DO SPACE OPTIMIZATION IN TABULATION:
+    *** Thumb Rule:
+    # Prev should be declared before base case and curr should be in the for loop.
+    # Whenever you see ind-1, then it means we need a prev element
+    # Here it is dp[ind-1] mean we need prev array and curr array
+    # according to base case, prev[0] and curr[0] is True
+    # replace dp[ind-1] with prev and dp[ind] with curr
+    # prev = curr
+
+    THUMB RULE TO CONVERT THE 2 arrays space into 1 array space optimization:
+    ***
+    * Identify the dependencies: Determine how the value of dp[i][j] in the 2D table is computed. Typically, it depends on values from the previous row, such as dp[i-1][j] or dp[i-1][j-something].
+    * Check for independence in curr row i.e. dp[i][j] should be dependent on prev row but not curr row
+    * Replace prev with dp
+    * Update array from right to left if required -- If the current value dp[j] depends on a previous value dp[j - something], ensure to update the 1D array from right to left (for j in range(amount, coin - 1, -1):). This ensures that you don’t overwrite the values needed for future calculations within the same iteration.
+    * Update the for loop iteration to avoid including the values in the calculation which are not needed.
+
 -> The pick/no-pick (or include/exclude) method is a common approach used in recursion to
 solve problems involving subsequences, subsets, or combinations.
+
+> Consider the dp array with the number of changing states. If 2 variables are changing states then we need to
+consider 2D dp and so on.
+> When considering base case, when starting at 0 consider base case at n-1 and vice versa.
+
 
 ** CONVERT list to tuples before passing to @cache **
 -> When using @cache annotation, make sure you dont pass lists into the function as list is mutable
