@@ -3,6 +3,7 @@
 
 -> Memoization : Top Down Approach -> Start with the top value and identify the subproblems as we go down.
 If a subproblem is already solved then remember it
+NOTE: In memoization, check for dp[i][j]!=-1 after writing the base cases because of range issues which can be avoided by checks in base case.
 
 -> Tabulation : Bottom Up Approach -> Identify the base cases and then use these to solve until we reach
 the point for we which we are finding the solution.
@@ -49,3 +50,6 @@ FOR 3D DP:
     * Explore all the paths in matrix based on given conditions
     using these variables
     * Find max/min/count accordingly
+
+
+DP ON STRINGS:
