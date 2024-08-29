@@ -53,3 +53,7 @@ FOR 3D DP:
 
 
 DP ON STRINGS:
+When converting memoization to tabulation:
+- ensure the dp table space is +1 of the ranges
+- i<0 converts to i==0 (because of taking a offset in the space) and j<0 is j==0
+- all expression in base case will be reduced by 1.[Ex. if it is j+1, it becomes j]
