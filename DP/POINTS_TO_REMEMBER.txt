@@ -57,3 +57,14 @@ When converting memoization to tabulation:
 - ensure the dp table space is +1 of the ranges
 - i<0 converts to i==0 (because of taking a offset in the space) and j<0 is j==0
 - all expression in base case will be reduced by 1.[Ex. if it is j+1, it becomes j]
+- loops are from 1 to n+1.
+
+When writing tabulation, keep this in mind:
+state transition:
+    *** Forward Direction: If the current state depends on the results of previous states (e.g., moving from the start of the problem towards the end),
+    then you should usually work forwards i.e. 0->n-1
+    *** Backward Direction: If the current state depends on the results of future states (e.g., moving from the end of the problem towards the start),
+    then you should work backwards. i.e. n-1 -> 0
+
+NOTE: DP on stocks works in backward direction since the current buy/sell decision
+depends on future price in the array

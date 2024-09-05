@@ -58,25 +58,7 @@ class Solution:
 
 
 #TABULATION
-class Solution:
-    def maxProfitUtil(self,index,buy,prices,dp):
-
-        if index == len(prices):
-            return 0
-
-        if dp[index][buy] != -1:
-            return dp[index][buy]
-
-        profit = 0
-        if buy==0: #BUY THE STOCK
-            profit = max(self.maxProfitUtil(index+1,0,prices,dp),
-                        self.maxProfitUtil(index+1,1,prices,dp)-prices[index])
-        else: #SELL THE STOCK
-            profit = max(self.maxProfitUtil(index+1,1,prices,dp),
-                        self.maxProfitUtil(index+1,0,prices,dp)+prices[index])
-
-        dp[index][buy] = profit
-        return dp[index][buy]
+class TabSolution:
 
     def maxProfit(self, prices: List[int]) -> int:
         dp = [[-1]*2 for _ in range(len(prices)+1)]
