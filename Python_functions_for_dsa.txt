@@ -1,0 +1,7 @@
+-> Bisect:
+ This works with the concept of Binary Search.
+ bisect.bisect(arr,<num>) -> Returns the right most index(in case ele is already present) where the element can be inserted is returned
+ bisect.bisect_left(arr,<num>) -> Returns the left most index in case ele is already present
+
+ bisect.insort(arr,<num>) -> Inserts the <num> in the right most index in case the num is already present
+ bisect.insort_left(arr,<num>) -> Inserts num in left most index.
