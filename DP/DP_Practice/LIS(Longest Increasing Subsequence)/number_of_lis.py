@@ -9,7 +9,6 @@ we are satisfying the LIS condition but the dp table is not increasing,
 then cnt increasing -> meaning that we have cnt+1 ways of arriving at this.
 
 At end, just get the total of counts where dp[i] == max(dp) indicating LIS.
-->
 
 """
 class Solution:
