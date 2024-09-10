@@ -1,0 +1,8 @@
+-> LinkedList
+ => linear data structure where elements are stored in nodes, and each node points to the next node in the sequence.
+ => In 32-bit systems, each pointer typically occupies 4 bytes, while in 64-bit systems, it's 8 bytes. This affects the memory footprint of linked lists, especially for large datasets.
+ => LL's can easily grow or shrink in size
+ => Traversed sequentially from the start until the the pointer is exhausted
+ => Insertion/Deletion when having node ref is O(1) or else O(n)
+ => Used for implementing stacks/queues/browser history.
+=> They offer dynamic size and efficient insertions/deletions, but have slower access times compared to arrays and use extra memory for storing pointers.
