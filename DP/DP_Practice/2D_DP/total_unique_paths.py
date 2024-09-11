@@ -5,9 +5,21 @@ There is a robot on an m x n grid. The robot is initially located at the top-lef
 Given the two integers m and n, return the number of possible unique paths that the robot can take to reach the bottom-right corner.
 
 Intuition:
-    RECURSION:
+    RECURSION: As we follow top down approach, we will start at last node and move either
+    left or up and when we reach the source ie. (0,0), we will return 1
+    We will sum all paths that we reached source from destination
+    Handle base cases i.e. whenever i<0 or j<0, then return 0
+
     MEMOIZATION:
-    TABULATION
+    To avoid calculating subproblem, we will use dp array which is same size as the input
+
+    TABULATION:
+        # Declare same size array input
+        # Initialize array with base cases i.e.
+        #
+        Ensure proper initialization is done.
+
+
 """
 #RECURSION
 class Solution:

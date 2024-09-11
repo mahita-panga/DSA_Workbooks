@@ -4,7 +4,7 @@ LC 2035. Partition Array Into Two Arrays to Minimize Sum Difference
 *** THIS IS NOT A DP PROBLEM ***
 
 Why DP FAILS:
-
+DP fails becuase we
 
 What to do:
     Meet In the Middle : Tweaked formed of binary search

@@ -10,7 +10,10 @@ NOTE:
     the space for prev_index becomes n+1.
 
 """
-
+# Memoization
+# As we are only printing the length, we will return 0+next item choice in case of not pick
+# and 1 + next item choice in case of pick
+# Ensure the ranges for prev_index are proper
 class Solution:
     def lisUtil(self,index,prev_index,nums,dp):
         if index==len(nums):
@@ -53,3 +56,27 @@ class TabSolution:
 
         # dp[0][0] holds the result, i.e., starting from index 0 with no previous element
         return dp[0][0]
+
+# BEST SOLUTION - 1D TABULATION
+# We need not do 2d dp array.
+# Idea is to maintain a dp array which contains the len of the longest increasing
+# subsequence so far for that element in the arr
+# Initially set dp arr to 1 indicating the len of subseq as 1
+# Traverse array, and for all its prev elements check if the curr num is > any of the
+# elements in array -> If yes get the max of all prev elements > curr element  by 1 or the
+# existing len.
+# max of dp is the len of LIS
+class Solution:
+    def lengthOfLIS(self, nums: List[int]) -> int:
+        n = len(nums)
+        dp = [1]*n
+        for i in range(1,len(nums)):
+            for j in range(i):
+                if nums[i] > nums[j]:
+                    dp[i] = max(dp[i],dp[j]+1)
+        return max(dp)
+# TC: O(N^2) and SC: O(N)
+
+# TC can further be brought down.
+# BINARY SEARCH + DP
+# https://leetcode.com/problems/longest-increasing-subsequence/solutions/1326308/C++Python-DP-Binary-Search-BIT-Solutions-Picture-explain-O(NlogN)/
