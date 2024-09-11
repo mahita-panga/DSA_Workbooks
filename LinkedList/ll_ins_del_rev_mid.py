@@ -68,3 +68,18 @@ class Solution:
         """
         node.val = node.next.val
         node.next = node.next.next
+
+"""
+Find middle of LL
+Tortoise Hare Method / slow-fast pntrs
+-> slow moves 1 step
+-> fast moves 2 steps
+=> By the time fast reaches end, slow will be in the middle.
+
+"""
+def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
+    fast,slow = head ,head
+    while fast!=None and fast.next!=None:
+        fast = fast.next.next
+        slow = slow.next
+    return slow
