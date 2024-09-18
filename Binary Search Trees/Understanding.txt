@@ -1,0 +1,23 @@
+* Binary Search Tree (BST) is a modification of BINARY TREE
+where left < root < right.
+=> All values in the left side should be smaller than root
+and all values of right side > root
+=> Every subtree of BST is a BST in itself
+=> Generally duplicates are not present but if present then they are represented with freq
+ 6 8 8 10
+        (8,2)
+        /   \
+    (6,1)   (10,1)
+
+*** SEARCHING A VALUE IN BST:
+
+    class Solution:
+        def searchBST(self, root: Optional[TreeNode], val: int) -> Optional[TreeNode]:
+            if root == None:
+                return
+            if val == root.val:
+                return root
+            if val < root.val:
+                return self.searchBST(root.left,val)
+            else:
+                return self.searchBST(root.right,val)
