@@ -1,0 +1,29 @@
+MST ->  Min. Spanning Tree : A graph with N nodes and N-1 Edges with minimum weighted sum
+PRIMS:
+*** Best For: Dense graphs, where E is large.
+->Greedy, grows MST one vertex at a time.
+	•   Start from any vertex.
+	•	Use a priority queue (min-heap) to always pick the smallest weight edge.
+	   ->PQ saves (wt,node,root)
+	•	Mark the current vertex as visited.
+	   -> Do the req action like sum/printing MST.
+	•	Add its adjacent unvisited vertices to the heap.
+	•	Repeat until all vertices are in the MST.
+-> TC: O(E log V) (with min-heap), E is the number of edges, and V is the number of vertices.
+-> SC: O(V + E) (for adjacency list and heap).
+
+KRUSKALS:
+***Best For: Sparse graphs, where E is small relative to V.
+-> Greedy, selects the smallest edges first and builds MST.
+	•	Sort all edges by weight.
+	•	Use a Disjoint Set Union (DSU) or Union-Find to keep track of connected components.
+	•	Add the smallest edge to the MST if it doesn’t form a cycle.
+	•	Repeat until MST includes all vertices.
+TC: O(E log E) (sorting the edges dominates), can also be written as O(E log V) using DSU.
+SC:O(V + E) (for storing edges and DSU).
+
+
+DISJOINT SETS:
+
+->UNION
+    By RANK:

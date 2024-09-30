@@ -4,3 +4,29 @@
  -> Unit weights : distance array(/matrix) + BFS/ Modified DFS
  -> Positive Weights:
     -> DIJKSTRA'S with PQ/Set
+
+
+Disjoint Set (Union-Find)
+ Use when:
+	•You are dealing with problems involving connectivity between elements.
+	•The task is to group elements into sets or find whether two elements are in the same set.
+	•You are asked to process union and find operations on a set of elements.
+ Example Probs:
+    * Connected Components in a Graph: For example, finding whether two nodes in an undirected graph are connected.
+	* Cycle Detection in an Undirected Graph: Use Union-Find to detect if two nodes belong to the same connected component before connecting them (cycle detection).
+	* Kruskal’s Algorithm: To build a Minimum Spanning Tree (MST), Union-Find helps efficiently check if adding an edge would create a cycle.
+	* Friendship Problems: Where users form groups or sets of friends.
+When to think of it:
+	•	Think of Union-Find when you have a problem with dynamic connectivity or merging components and need to efficiently check if two elements are in the same group or set.
+
+Topo Sort
+ Use when:
+	•The problem involves a Directed Acyclic Graph (DAG), and you’re asked to order nodes such that for every directed edge (u -> v), node u appears before v.
+	•The problem involves dependencies where certain tasks must be completed before others.
+ Course Scheduling: Given a set of courses with prerequisites, determine a valid order in which to take the courses.
+	•Task Scheduling: Finding an order to perform tasks where some tasks depend on the completion of others.
+	•Dependency Resolution: When a sequence of tasks is subject to certain constraints (e.g., package installation problems).
+ When to think of it:
+	•Think of Toposort when you are given a problem involving tasks or events with dependencies or constraints where some events must happen before others. Toposort helps determine a valid sequence or detect cyclic dependencies.
+
+DFS (Depth First Search)
