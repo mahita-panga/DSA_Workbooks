@@ -19,6 +19,7 @@ which means the mail id is already present for some node, then we union both the
     -> We will find ultimate parent of the node and keep adding the mails to the set
 -> We create final list which converts parent node to name and sorts all the mails.
 """
+from typing import List
 class Disjoint_Set:
     def __init__(self, N):
         self.parent = [i for i in range(N+1)]
