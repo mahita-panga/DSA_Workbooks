@@ -24,18 +24,19 @@ Answer:
 Key Points for Solution:
 
 	1.	Disjoint Set Data Structure:
-	•	find(node): Find the ultimate parent (with path compression).
-	•	union(u, v): Connect nodes u and v based on the size of their respective components.
+    	•	find(node): Find the ultimate parent (with path compression).
+    	•	union(u, v): Connect nodes u and v based on the size of their respective components.
 	2.	Row-Column Mapping:
-	•	Union stones based on their row and column indices, but make sure to differentiate rows from columns by adding an offset (like v+10000+1).
+	   •	Union stones based on their row and column indices, but make sure to differentiate rows from columns by adding an offset (like v+10000+1).
 	3.	Connected Components Calculation:
-	•	After all union operations, find the number of unique parents for the stones to determine the number of connected components.
+	   •	After all union operations, find the number of unique parents for the stones to determine the number of connected components.
 
 Time Complexity:
 
 	•	O(N * α(N)), where N is the number of stones, and α(N) is the inverse Ackermann function, which grows very slowly.
 
 """
+from typing import List
 class DisjointSet:
     def __init__(self,N):
         self.parent = [i for i in range(N)]
