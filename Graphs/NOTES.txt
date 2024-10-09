@@ -4,6 +4,8 @@
  -> Unit weights : distance array(/matrix) + BFS/ Modified DFS
  -> Positive Weights:
     -> DIJKSTRA'S with PQ/Set
+* BellmanFord: Works with negative weight graphs
+Every edge is relaxed V-1 times ensuring shortest path to each vertex is calculated.
 
 
 Disjoint Set (Union-Find)
