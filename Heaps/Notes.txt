@@ -1,0 +1,27 @@
+Heap pop/Extract Min - log(N) <-Remove the node and balance the heap.
+Heap push - log(N) <-Inserts and rebalances the heap
+Heap peek - O(1) <- Gets the top element
+Heap sort - O(nlogn) <- n elements in array, n balances needed
+Heapify : Unbalanced binary tree to a min/max heap : O(n)
+Steps to heapify unbalanced tree:
+-> Do not look at leaf nodes
+-> Start at right most node and do an operation called 'Sift Down' which will place
+the node at the correct location.
+->After sifting down all non-leaf nodes, the tree will be heapified
+-> Time complexity: O(n) as we process n/2 nodes and each sift down takes O(log n)
+-> This is more efficient than inserting n elements into an empty heap (O(n log n))
+
+Max Heap: root element will be bigger than its children
+Min Heap (Default): root element will be smaller than its children.
+
+NOTE: heapq supports only min heap. To make it work like a max heap, we will have to negate the values
+
+Functions to support heap
+# 1. parent(i): Function to return the parent node of node i
+# 2. leftChild(i): Function to return index of the left child of node i
+# 3. rightChild(i): Function to return index of the right child of node i
+# 4. shiftUp(int i): Function to shift up the node in order to maintain the
+# heap property
+# 5. shiftDown(int i): Function to shift down the node in order to maintain the
+# heap property.
+# int s=-1, current index value of the array H[].
