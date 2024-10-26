@@ -4,6 +4,8 @@ done by using prefix sum logic but one catch with prefix sum:
 In case any update happens to the array then the entire prefix sum needs to be calculated
 -> After every update in the original array, recalculating the prefix sums requires O(n) time, making it inefficient for frequently changing data.
 
+Segment Trees operate best on contigous ranges. So any problem should be converted into contigours ranges before adding to seg tree
+
 SEGMENT TREES are powerful when:
     -> Frequent updates are needed in the array.
     -> Dynamic range queries (like finding min/max, sum, gcd, etc.) are required over different segments of an array.
