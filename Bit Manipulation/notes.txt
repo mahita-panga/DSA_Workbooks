@@ -1,0 +1,38 @@
+--> In Python, we can use bin(num) to convert number to binary representation.
+bin(10) -> '0b1010' so do bin(10).replace('0b','') for removing 0b which represents binary prefix.
+
+-->  For converting binary to integer, we can use int() with base 2.
+int('1010',2) = 10
+
+--> 1's complement - flipping 0's to 1's and 1's to 0's
+--> 2's complement - 1's complement + 1
+
+-- int - 32 bits. last bit from right is reserved for neg/pos sign.
+-- negative numbers are saved as 2's complement, sign bit is 1.
+
+** Formulas:
+    - x >> k : x right shift k means (x//2^k)
+    - x<< k : x left shik k denotes (x*2^k)
+
+-> not operator or ~ -> flips all 1's and 0's
+                     -> check if bin is negative
+                     -> if negative, do 2's complement
+                     -> else end.
+    ex: ~(5)
+            5 is repr. as : 0|000 0000 0000 0101
+            not does:
+                1. 1|111 1111 1111 1010
+                2. Is negative, sign bit is 1. so yes
+                -> 2's complement: 1|000 0000 0000 0101
+                                 +                    1
+                                 -----------------------
+                                   1|000 0000 0000 0110
+                                => -6
+                So ~5 = -6
+--> XOR: even no of 1's is 0 and odd number of 1's is 1
+    XOR of same number is 0. 4^4 = 100 ^ 100 = 000
+
+    XOR for swapping numbers a,b:
+     a = a^b
+     b = a^b => (a^b)^b => b^b =0, so we are left with b=a
+     a = a^b => (a^b)^b => (a^b)^a(since b=a) = b

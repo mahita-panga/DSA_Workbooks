@@ -1,0 +1,10 @@
+-> When a problem arises where we have to find the best ways to partition and solve a problem, then it is
+partition DP
+
+Ex: Best way to multiply matrix with minimal cost: ABCD -> A(BC)D or (AB)CD or A(BCD)
+            i  j
+            ABCD
+       /     |   \
+   (ABC)D   A(BCD) ...
+   i  j ij  iji  j
+-> Here we are trying to find the best 2 partitions which gives us minimal cost

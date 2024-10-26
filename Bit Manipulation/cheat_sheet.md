@@ -16,6 +16,7 @@ Common bit manipulation techniques:
 - n//2 = n<<1, n//2^x = n<<x
 - n%2 = n&1  // if a number has last bit as 1, it is odd and hence returns 1 else 0.`
 
+
 1. Check if i-th bit is set: `num & (1 << i) != 0`
 - (1 << i) creates a number with only the i-th bit set, AND with num is non-zero only if i-th bit in num is set
 

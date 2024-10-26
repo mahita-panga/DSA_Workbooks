@@ -1,0 +1,160 @@
+SEGMENT TREES:
+-> Segment Trees are used for range queries that we do on array. generally range queries are
+done by using prefix sum logic but one catch with prefix sum:
+In case any update happens to the array then the entire prefix sum needs to be calculated
+-> After every update in the original array, recalculating the prefix sums requires O(n) time, making it inefficient for frequently changing data.
+
+SEGMENT TREES are powerful when:
+    -> Frequent updates are needed in the array.
+    -> Dynamic range queries (like finding min/max, sum, gcd, etc.) are required over different segments of an array.
+
+	•	Time Complexity:
+	•	Build Time: O(n)
+	•	Range Query: O(log n)
+	•	Update: O(log n)
+	•	Space Complexity: O(2n), which provides enough space to store each segment and its child nodes.
+
+Lets say we have array 3,1,4,2. The segment tree for calculating the sum of elements in range looks like:
+                [10] ([0-3])         -N/4
+               /     \
+          [4](0-1)    [6](2-3)        -N/2 nodes
+         /   \        /   \
+       [3]   [1]    [4]   [2]         -N nodes
+       (0-0) (1-1)  (2-2)  (3-3)
+
+=> Array: [10,4,6,3,1,4,2]
+Implementation:
+    -> Segment Trees construction -> Leaf nodes are the array elements(N)
+    -> N leaf nodes => Total Nodes : N+N/2+N/4+...= N(1+1/2+1/4+..) = 2N+1
+    -> Height of the tree = logN
+    -> Element at ith pos in array will be at i+nth pos in seg tree array
+    -> For any element i, the left child will be at 2*n and right child will be at 2*n+1
+        -> In Bit manipulation, it is represented as i<<1 and i<<1|1
+
+Construction:
+    ->st = [0]*n + arr
+    #Since the seg tree contains 2N elements with the array elements as leaf nodes. So we created seg array and appended ele at the end
+    #our segtree state now: [0 0 0 0 3 1 4 2]
+    #we need to fill the root nodes with child node val.
+    #we know that root = left+right i.e. any ith node = value in 2*i + value in 2*i+1
+    # root nodes are from 0-n in the 2n array. So start filling from the last element.
+
+    for i in range(n-1,0,-1):
+            st[i] = sum(st[i<<1],st[i<<1|1]) #Operation will be changes based on the range query needed.
+    # this gives [0 10 4 6 3 1 4 2]
+
+Querying:
+    given a range [start,end] #example[1-3] => elements 1,4,2
+    we do:
+        left = start+n
+        right = end+n+1
+    =>  Translates the original query range [start, end] to segment tree index range, where leaves start from index n.
+        i.e. new ranges [5,8]
+    => Iterate Over the Range [left, right) in the Segment Tree, we are narrowing down the range while aggregating the required results.
+        while left<right:
+            if left&1:
+                ans = sum(ans,st[left])
+                left+=1
+            # Left Boundary: If left is an odd index, it means that st[left] fully covers part of the range we’re querying.
+            # So, we include st[left] in our result and increment left by 1 to move to the next segment.
+
+            if right&1:
+                right-=1
+                ans = sum(ans,st[right])
+            # Right Boundary: If right is an odd index (meaning right - 1 is an even node that fully covers part of our query range),
+            # we decrement right by 1 and include st[right - 1] in the result.
+
+            left >>= 1
+            right >>=1
+            #After processing, we move left and right to their respective parent nodes by right-shifting each by 1
+            #i.e. going to the parent 2*i and  2*i+1
+
+Example Walkthrough
+
+Using arr = [3, 1, 4, 2], suppose we’ve built the segment tree in st with values that give us minimums across each range.
+st: [0 10 4 6 3 1 4 2]
+
+To query the minimum in the range [1, 3]:
+Initialization:
+	•	qs = 1, qe = 3, n = 4
+	•	left = qs + n = 1 + 4 = 5
+	•	right = qe + n + 1 = 3 + 4 + 1 = 8
+First Iteration:
+	•	left = 5 (odd), so include st[5] in ans, making ans = min(inf, st[5]).
+	•	Move left to 6 (left += 1).
+	•	right = 8 (even), so move right to 4 (right -= 1).
+Second Iteration:
+	•	Now left = 3 and right = 3 (loop ends).
+	•	The result in ans is the minimum value in the queried range [1, 3].
+
+
+Updates:
+    -> Point Updates: Updating a single element in the tree and propogating the change to its root nodes
+
+    def updateST(st, n, idx, new_val):
+        pos = idx + n         # Position of idx in the segment tree
+        st[pos] = new_val      # Update the leaf node with the new value
+
+        # Update all ancestors of the modified node
+        while pos > 1:
+            pos //= 2
+            st[pos] = sum(st[2 * pos], st[2 * pos + 1])  # Recalculate the parent nodes
+    TC: O(lgn)
+
+    For doing range updates via point updates, we will have TC: O(nlgn) which is not recommended.
+    Better approach:
+
+    -> Range Updates:  For updating a range of elements in the seg tree, we will be doing
+    "LAZY PROPOGATION" i.e. identifying all the elements in the tree that needs to be updated
+    and save it in a "lazy" array and update the lazy array with the the values need to be updated.
+    qs,qe: query start, query end
+    left,right: segtree range for updating. Start with whole seg tree i.e. [1,N)
+    pos: current index val
+
+    def lazy_prop(lazy,qs,qe,left,right=None,pos=1):
+        if right is None:
+            right = n  # Set initial boundary for root call
+
+        #Update any pending updates in the lazy array for this position if lazy[pos]!=0
+        # Apply any pending updates from lazy array
+        if lazy[pos] != 0:
+            # Update st[pos] with the pending value
+            st[pos] += lazy[pos] * (right - left + 1) #Update the seg tree with the val*count of objects in the range
+            # Pass the pending update to children if not a leaf node
+            if left != right:
+                lazy[2 * pos] += lazy[pos]
+                lazy[2 * pos + 1] += lazy[pos]
+            lazy[pos] = 0  # Clear the lazy update for this node
+
+        #We have 3 conditions to check:
+        # -> No Overlap: when [qs,qe] are outside the boundary of seg tree, Nothing to do here
+        if qs > right or qe < left:
+            return
+
+        #-> Full overlap: when [qs,qe] is fully equal the range of the segtree, then all nodes in the segtree
+        #should be updated
+        if qs <= left and qe >= right:
+            # Apply the update to st[pos] and mark children for later
+            st[pos] += val * (right - left + 1)
+            if left != right:  # Mark children for future updates
+                lazy[2 * pos] += val
+                lazy[2 * pos + 1] += val
+            return
+        #-> Partial Overlap: when [qs,qe] is partially equal to the range of segtree
+        #which means the range is divided into the left and right child of seg tree, then
+        #Break the seg tree into 2 halves and do the same checks for the left half or right half
+        mid = (left + right) // 2
+
+        range_update(st, lazy, n, qs, qe, val, left, mid, 2 * pos)  # Update left child LC is at 2*pos
+        range_update(st, lazy, n, qs, qe, val, mid + 1, right, 2 * pos + 1)  # Update right child RC is at 2*pos+1
+
+        st[pos] = st[2 * pos] + st[2 * pos + 1] # Combine child results for current node
+
+EXAMPLE:
+Consider an array arr = [3, 1, 4, 2] with n = 4. We want to add 5 to all elements in the range [1, 3].
+Initial call: lazy_prop(st, lazy, 4, 1, 3, 5)
+Since [1, 3] partially overlaps with [0, 3], it updates the left and right children.
+For each child node that partially or fully overlaps [1, 3], add 5 to st[pos] or mark it in lazy[pos] for future updates.
+
+TC: O(logn) since we are parking all the updates that needs to be done and then doing it at once
+SC:O(4N) ->seg tree array and lazy array
