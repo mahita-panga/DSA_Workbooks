@@ -1,0 +1,6 @@
+Understanding: https://www.youtube.com/watch?v=QBQvTjNaIRw
+
+Concepts in this algorithm:
+-> Prefix array concept
+-> Ordered Dict
+-> Binary Search
