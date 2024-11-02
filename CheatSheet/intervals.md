@@ -50,7 +50,7 @@ Ex:
 	•	Rectangle Coverage: Determining if rectangles cover an exact area without overlap or gaps.
 	•	Event Scheduling with Multiple States: Tracking and processing events where multiple intervals can affect each other dynamically, as in interval intersections or counting.
 
-	| **Criteria**            | **Greedy**                                   | **Sweepline**                             |
+| **Criteria**            | **Greedy**                                   | **Sweepline**                             |
 |-------------------------|----------------------------------------------|-------------------------------------------|
 | **Use When**            | Local optimal choices lead to a global optimal solution | Event-driven changes or dynamic range handling |
 | **Common Tasks**        | Maximize non-overlapping intervals, scheduling | Counting overlaps, exact area coverage   |
@@ -68,9 +68,9 @@ When to Use:
 - Dynamic Range Queries: When frequent updates or queries on specific ranges (e.g., min/max, sum) are necessary.
 - Fixed Range: The data structure is efficient for intervals over a fixed range (such as [1, N]), and it can handle large, sparse data through lazy propagation.
 
-| **Criteria**                 | **Segment Tree**                               | **Sweepline Technique**                      |
-|------------------------------|-----------------------------------------------|---------------------------------------------|
-| **Use When**                 | Range queries and updates over a fixed range   | Event-based interval changes, overlap checks |
-| **Data Structure**           | Tree-based, usually array-backed              | Sorted lists, heaps, or interval trees       |
-| **Operations Optimized**     | Aggregate queries, frequent updates on ranges | Handling events of appearance/disappearance |
-| **Common Problems**          | Range sums, min/max queries, dynamic interval queries | Rectangle area verification, max overlap |
+  | **Criteria**                 | **Segment Tree**                               | **Sweepline Technique**                      |
+  |------------------------------|-----------------------------------------------|---------------------------------------------|
+  | **Use When**                 | Range queries and updates over a fixed range   | Event-based interval changes, overlap checks |
+  | **Data Structure**           | Tree-based, usually array-backed              | Sorted lists, heaps, or interval trees       |
+  | **Operations Optimized**     | Aggregate queries, frequent updates on ranges | Handling events of appearance/disappearance |
+  | **Common Problems**          | Range sums, min/max queries, dynamic interval queries | Rectangle area verification, max overlap |
