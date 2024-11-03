@@ -4,3 +4,20 @@ Concepts in this algorithm:
 -> Prefix array concept
 -> Ordered Dict
 -> Binary Search
+
+
+Algorithm:
+-> Event Definition:
+ The first step is to define “events” => Events are points where something significant happens, such as the beginning snd end of a line segment.
+ In sweepline, we process the events left to right or top to bottom in SORTED order
+ 
+-> Event Queue:
+ Place all events in a sorted data structure like ordered dict/list. Sorting by the x-coordinate (or y for vertical sweeps) allows us to process events in order.
+
+-> Active Structure
+ This keeps track of the objects (e.g., line segments, intervals) currently intersected by the sweep line.As we move the sweepline
+ we add elements or remove elements which is implemented by set or list
+
+-> Event Processing:
+ For each event, update the active structure based on whether it’s an “add” event (e.g., start of an interval) or a “remove” event (e.g., end of an interval).
+ 
