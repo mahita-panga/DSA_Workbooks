@@ -4,6 +4,8 @@ TO DO/Left Out TOPICS
 - [ ] DP: Squares
 - [x] Graphs: Disjoint Sets / MST
 - [ ] Graphs: Other Algorithms
+- [x] Priority Queues, Min Heap
+- [ ] Tries
 - [ ] Meet In the Middle Technique
 - [ ] Monotonic Stacks
 - [ ] Segment Trees
