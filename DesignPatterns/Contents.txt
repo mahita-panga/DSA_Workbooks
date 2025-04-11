@@ -1,0 +1,16 @@
+CREATIONAL PATTERNS:
+    -> Singleton
+    -> Factory
+    -> Builder
+    -> Prototype
+
+BEHAVIORAL PATTERNS:
+    -> Observer
+    -> State
+    -> Strategy
+    -> Iterator
+    -> Chain Of Responsibility
+    -> Command (To Do)
+    -> Mediator (To Do)
+    -> Memento (To Do)
+    -> Visitor(To Do)
