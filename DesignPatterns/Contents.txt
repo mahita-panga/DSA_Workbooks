@@ -14,3 +14,9 @@ BEHAVIORAL PATTERNS:
     -> Mediator (To Do)
     -> Memento (To Do)
     -> Visitor(To Do)
+
+ STRUCTURAL PATTERNS:
+    -> Decorator
+    -> Proxy
+
+
