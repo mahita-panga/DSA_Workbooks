@@ -19,6 +19,8 @@ Tabulation:
 
 
 """
+from typing import List
+
 
 class Solution:
     def maxProfitUtil(self,index,buy,cap,prices,dp):

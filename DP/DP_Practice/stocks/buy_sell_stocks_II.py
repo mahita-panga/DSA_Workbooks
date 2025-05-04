@@ -31,9 +31,11 @@ Intuition:
         So, traverse from the reverse of the array.
         At day0 whatever max profit you get, that is the answer.
 """
+
+
 #MEMOIZATION
 class Solution:
-    def maxProfitUtil(self,index,buy,prices,dp):
+    def maxProfitUtil(self, index, buy, prices, dp):
 
         if index == len(prices):
             return 0
@@ -42,35 +44,35 @@ class Solution:
             return dp[index][buy]
 
         profit = 0
-        if buy==0: #BUY THE STOCK
-            profit = max(self.maxProfitUtil(index+1,0,prices,dp),
-                        self.maxProfitUtil(index+1,1,prices,dp)-prices[index])
-        else: #SELL THE STOCK
-            profit = max(self.maxProfitUtil(index+1,1,prices,dp),
-                        self.maxProfitUtil(index+1,0,prices,dp)+prices[index])
+        if buy == 0:  #BUY THE STOCK
+            profit = max(self.maxProfitUtil(index + 1, 0, prices, dp),
+                         self.maxProfitUtil(index + 1, 1, prices, dp) - prices[index])
+        else:  #SELL THE STOCK
+            profit = max(self.maxProfitUtil(index + 1, 1, prices, dp),
+                         self.maxProfitUtil(index + 1, 0, prices, dp) + prices[index])
 
         dp[index][buy] = profit
         return dp[index][buy]
 
     def maxProfit(self, prices: List[int]) -> int:
-        dp = [[-1]*2 for _ in range(len(prices))]
-        return self.maxProfitUtil(0,0,prices,dp)
+        dp = [[-1] * 2 for _ in range(len(prices))]
+        return self.maxProfitUtil(0, 0, prices, dp)
 
 
 #TABULATION
 class TabSolution:
 
     def maxProfit(self, prices: List[int]) -> int:
-        dp = [[-1]*2 for _ in range(len(prices)+1)]
+        dp = [[-1] * 2 for _ in range(len(prices) + 1)]
         dp[len(prices)][0] = 0
         dp[len(prices)][1] = 0
 
-        for i in range(len(prices)-1,-1,-1):
+        for i in range(len(prices) - 1, -1, -1):
             for buy in range(2):
                 profit = 0
-                if buy==0:
-                    profit= max(dp[i+1][0],dp[i+1][1]-prices[i])
+                if buy == 0:
+                    profit = max(dp[i + 1][0], dp[i + 1][1] - prices[i])
                 else:
-                    profit= max(dp[i+1][1],dp[i+1][0]+prices[i])
+                    profit = max(dp[i + 1][1], dp[i + 1][0] + prices[i])
                 dp[i][buy] = profit
         return dp[0][0]

@@ -12,6 +12,9 @@ Intuition:
     -> Since we are doing index+2, in base case handle it via index>=len then return 0.
 
 """
+from typing import List
+
+
 #MEMOIZATION
 class Solution:
     def maxProfitUtil(self,index,buy,prices,dp):
@@ -40,6 +43,8 @@ class Solution:
 class TabSolution:
     def maxProfit(self, prices: List[int]) -> int:
         dp = [[0]*2 for _ in range(len(prices)+2)] #DP TABLE FOR len+2 space to accomodate the cooldown
+        # When you sell at day i,you can only buy again at day i+2 (cooldown of 1 day).
+        #So, to avoid OOB errors, we need +2
         #BASE CASE: On last day, buy and sell decisions would be 0 as a transaction could not be
         #completed
         for index in range(len(prices)-1,-1,-1):
